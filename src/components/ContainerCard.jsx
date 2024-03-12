@@ -69,25 +69,24 @@ const ContainerCard = ({ container, onOpenModal, onAddVolume }) => {
         <Typography variant="body1" gutterBottom>
           Volume: {volume}%
         </Typography>
-        <div style={{display: "flex" , justifyContent: "space-between"}}>
-        <TextField
-          type="number"
-          label="Adicionar Volume (%)"
-          value={addedVolume}
-          onChange={handleInputVolumeChange}
-          InputProps={{ inputProps: { min: 0, max: 100 - volume } }}
-          style={{ marginBottom: "10px", width: "100px" }}
-        />
-        <Button
-          variant="contained"
-          onClick={handleAddVolume}
-          disabled={addedVolume <= 0 || volume + addedVolume > 100}
-          style={{height: "56px", }}
-        >
-          Adicionar Volume
-        </Button>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <TextField
+            type="number"
+            label="Adicionar Volume (%)"
+            value={addedVolume}
+            onChange={handleInputVolumeChange}
+            InputProps={{ inputProps: { min: 0, max: 100 - volume } }}
+            style={{ marginBottom: "10px", width: "100px" }}
+          />
+          <Button
+            variant="contained"
+            onClick={handleAddVolume}
+            disabled={addedVolume <= 0 || volume + addedVolume > 100}
+            style={{ height: "56px" }}
+          >
+            Adicionar Volume
+          </Button>
         </div>
-        
         <Box
           sx={{
             position: "absolute",
