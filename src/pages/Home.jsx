@@ -5,6 +5,7 @@ import AlertModal from "../components/AlertModal";
 import ColetaList from "../components/CollectList";
 import ContainerLegend from "../components/ContainerLegend";
 import Header from "../components/Header";
+
 const Home = () => {
   const [containers, setContainers] = useState([
     { id: 1, volume: 10 },
@@ -25,7 +26,6 @@ const Home = () => {
       volume: container.volume,
       hora: horaMinuto,
       dataHora: dataHora,
-     
     };
     setColetas([...coletas, coleta]);
     const updatedContainers = containers.map((c) =>
@@ -49,7 +49,6 @@ const Home = () => {
       );
       setSelectedContainer(selectedContainer);
       setOpenModal(true);
-      handleColeta(containerId, true);
     }
   };
 
@@ -65,31 +64,32 @@ const Home = () => {
   };
 
   return (
-<><Header/>
-<Container style={{border: "1px solid gray" , borderRadius: "10px", padding: '15px', marginTop: '30px'}}>
-       <ContainerLegend />
-      <Grid container spacing={2}>
-        {containers.map((container) => (
-          <Grid item xs={12} sm={6} md={4} key={container.id}>
-            <ContainerCard
-              container={container}
-              onOpenModal={() => handleOpenModal(container.id)}
-              onColeta={() => handleColeta(container.id, false)}
-              onAddVolume={(volume) => handleAddVolume(container.id, volume)}
-            />
-          </Grid>
-        ))}
-      </Grid>
-      {selectedContainer && (
-        <AlertModal
-          open={openModal}
-          onClose={handleCloseModal}
-          container={selectedContainer}
-          onColeta={() => handleColeta(selectedContainer.id, true)}
-        />
-      )}
-      <ColetaList coletas={coletas} />
-    </Container>
+    <>
+      <Header />
+      <Container style={{ border: "1px solid gray", borderRadius: "10px", padding: '15px', marginTop: '30px' }}>
+        <ContainerLegend />
+        <Grid container spacing={2}>
+          {containers.map((container) => (
+            <Grid item xs={12} sm={6} md={4} key={container.id}>
+              <ContainerCard
+                container={container}
+                onOpenModal={() => handleOpenModal(container.id)}
+                onColeta={() => handleColeta(container.id, false)}
+                onAddVolume={(volume) => handleAddVolume(container.id, volume)}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        {selectedContainer && (
+          <AlertModal
+            open={openModal}
+            onClose={handleCloseModal}
+            container={selectedContainer}
+            onColeta={(containerId) => handleColeta(containerId, true)}
+          />
+        )}
+        <ColetaList coletas={coletas} />
+      </Container>
     </>
   );
 };
