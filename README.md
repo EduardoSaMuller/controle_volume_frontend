@@ -2,6 +2,7 @@
 
 Esse desafio consiste em apresentar 03 containers com seus respectivos volumes, ao qual é mostrado a % em que cada um deles se encontra e ao chegar aos seus 80% é emitido um modal de alerta para realizar a coleta desse container. 
 
+O projeto pode ser acessado diretamente aqui : https://controle-volume-frontend.vercel.app/
 
 
 ## Funcionalidades 🚀
